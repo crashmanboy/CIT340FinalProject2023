@@ -1,0 +1,120 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+
+public class Player : MonoBehaviour
+{
+    public float speedPerSecond = 4;
+    public float jumpPower = 10;
+    private float lateralMovement = 0;
+    private bool isJumping = false;
+
+
+    
+    private bool canJump = true;
+
+    Rigidbody2D rb;
+
+    Animator animator;
+
+    SpriteRenderer spriteRenderer;
+
+
+    Vector3 respawnPoint;
+    
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        //This is not normally considered a preferred choice...
+        //DontDestroyOnLoad(gameObject);
+        rb = GetComponent<Rigidbody2D>();
+        if (rb == null)
+        {
+            Debug.Log("Hey you need a rigidbody!");
+        }
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        //We read once our starting position and we store that.
+        if (PlayerPrefs.HasKey("PositionX"))
+        {
+            respawnPoint.x = PlayerPrefs.GetFloat("PositionX", 0);
+            respawnPoint.y = PlayerPrefs.GetFloat("PositionY", 0);
+            transform.position = respawnPoint;
+        }
+        else
+        {
+            respawnPoint = transform.position;
+        }
+    }
+
+
+
+
+    // Update is called once per frame
+    void Update()
+    {
+
+
+        lateralMovement = Input.GetAxis("Horizontal");
+
+        isJumping = Input.GetAxis("Jump") > 0 ? true : false;
+
+    }
+    private void FixedUpdate()
+    {
+
+        if (transform.position.y < -14)
+        {
+
+            rb.velocity = Vector3.zero;
+            transform.position = respawnPoint;
+        }
+
+        rb.velocity = new Vector2(lateralMovement * speedPerSecond * Time.fixedDeltaTime, rb.velocity.y);
+
+
+        if (isJumping)
+        {
+
+            Vector3 feetPosition = transform.GetChild(0).position;
+
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(feetPosition, 0.25f);
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                if (colliders[i].gameObject == gameObject)
+                    continue;
+
+                rb.velocity = new Vector2(rb.velocity.x, 0);
+                rb.AddForce(Vector2.up * jumpPower);
+                break;
+            }
+        }
+
+
+        if (rb.velocity.magnitude > 0.05f)
+        {
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
+        }
+
+        if (rb.velocity.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (rb.velocity.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+    }
+
+
+
+
+
+
+}
