@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -8,8 +9,10 @@ public class Player : MonoBehaviour
     public float speedPerSecond = 4;
     public float jumpPower = 10;
     private float lateralMovement = 0;
-    private bool isJumping = false;
 
+    private float jumpTime = 0;
+    public float maxJumpTime = 1;
+    private bool isJumping = false;
 
     
     private bool canJump = true;
@@ -87,7 +90,8 @@ public class Player : MonoBehaviour
                     continue;
 
                 rb.velocity = new Vector2(rb.velocity.x, 0);
-                rb.AddForce(Vector2.up * jumpPower);
+                StartCoroutine(DoJump());
+                //rb.AddForce(Vector2.up * jumpPower);
                 break;
             }
         }
@@ -95,11 +99,11 @@ public class Player : MonoBehaviour
 
         if (rb.velocity.magnitude > 0.05f)
         {
-            animator.SetBool("isMoving", true);
+            animator.SetBool("IsMoving", true);
         }
         else
         {
-            animator.SetBool("isMoving", false);
+            animator.SetBool("IsMoving", false);
         }
 
         if (rb.velocity.x > 0)
@@ -112,7 +116,16 @@ public class Player : MonoBehaviour
         }
     }
 
-
+    IEnumerator DoJump()
+    {
+        while(isJumping && jumpTime < maxJumpTime)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            jumpTime += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        jumpTime = 0;
+    }
 
 
 

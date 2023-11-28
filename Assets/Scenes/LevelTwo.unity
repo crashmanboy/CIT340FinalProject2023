@@ -1267,6 +1267,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: New Piskel (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 5681778432380297760, guid: 6dedd663617369d44bac61152692c688, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5681778432380297760, guid: 6dedd663617369d44bac61152692c688, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1655557603
+      objectReference: {fileID: 0}
     - target: {fileID: 6742992697894370591, guid: 6dedd663617369d44bac61152692c688, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.811023
@@ -1593,11 +1601,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4565847677933009641, guid: 770779bd0e01dde40abc57219655d6ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.629076
+      value: -2.61
       objectReference: {fileID: 0}
     - target: {fileID: 4565847677933009641, guid: 770779bd0e01dde40abc57219655d6ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.9653149
+      value: -2.94
       objectReference: {fileID: 0}
     - target: {fileID: 4565847677933009641, guid: 770779bd0e01dde40abc57219655d6ca, type: 3}
       propertyPath: m_LocalPosition.z

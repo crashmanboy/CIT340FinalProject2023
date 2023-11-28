@@ -48,7 +48,9 @@ public class PersistentValues : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
+            SceneManager.activeSceneChanged -= checkScene;
             currentPickupNumber = 0;
+            instance = null;
             Destroy(gameObject);
         }
     }

@@ -11,8 +11,10 @@ public class JumpPowerUp : MonoBehaviour
         {
             Player player = collision.gameObject.GetComponent<Player>();
             sound.Play();
-            player.jumpPower = 500;
+            player.jumpPower = 10;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<Collider2D>().enabled = false;
+            gameObject.GetComponentInChildren<ParticleSystem>().Play();
             Invoke("Kill", 3f);
             PersistentValues.currentPickupNumber++;
         }

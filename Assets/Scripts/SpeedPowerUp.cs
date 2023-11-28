@@ -14,6 +14,8 @@ public class RunPowerUp : MonoBehaviour
             sound.Play();
             player.speedPerSecond = 500;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<Collider2D>().enabled = false;
+            gameObject.GetComponentInChildren<ParticleSystem>().Play();
             Invoke("Kill", 3f);
             PersistentValues.currentPickupNumber++;
         }
