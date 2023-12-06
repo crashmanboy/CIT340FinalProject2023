@@ -5,7 +5,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PickupChecker : MonoBehaviour
-{ // Start is called before the first frame update
+{ 
+    // operates how the pickups are counted each time they are collected and syncs to the text in the game levels
+    
+    // Start is called before the first frame update
     static GameObject instance;
     public TMP_Text pickupText;
     public float beginningPickupNumber;

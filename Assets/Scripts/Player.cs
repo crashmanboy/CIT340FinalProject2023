@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
+    //player movement (includes jump and running) and coroutine
+
+
     public float speedPerSecond = 4;
     public float jumpPower = 10;
     private float lateralMovement = 0;
@@ -30,8 +34,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //This is not normally considered a preferred choice...
-        //DontDestroyOnLoad(gameObject);
+        
         rb = GetComponent<Rigidbody2D>();
         if (rb == null)
         {
@@ -39,7 +42,7 @@ public class Player : MonoBehaviour
         }
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        //We read once our starting position and we store that.
+        
         if (PlayerPrefs.HasKey("PositionX"))
         {
             respawnPoint.x = PlayerPrefs.GetFloat("PositionX", 0);
@@ -91,7 +94,7 @@ public class Player : MonoBehaviour
 
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 StartCoroutine(DoJump());
-                //rb.AddForce(Vector2.up * jumpPower);
+                
                 break;
             }
         }

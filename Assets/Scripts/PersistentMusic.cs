@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PersistentMusic : MonoBehaviour
 {
+
+    // background music plays on a loop at start of main menu and never stops between levels
+
     static GameObject instance;
 
     void Start()

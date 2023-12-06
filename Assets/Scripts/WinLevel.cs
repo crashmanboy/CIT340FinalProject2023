@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class WinLevel : MonoBehaviour
 {
+
+    // sound plays when you win level and loads the next scene after that level
+
+
     public GameObject soundEffect2;
     public string levelName;
 

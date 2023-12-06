@@ -6,7 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class PersistentValues : MonoBehaviour
 {
-    /// Start is called before the first frame update
+
+    
+    //values like timer and pickup counter only start at beginning of first level, continue through second level, and reset to zero when beating the game and going back to main menu
+
+
+    // Start is called before the first frame update
     static GameObject instance;
     public TMP_Text pickupText;
     public float beginningPickupNumber;

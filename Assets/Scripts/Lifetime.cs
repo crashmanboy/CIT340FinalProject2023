@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Lifetime : MonoBehaviour
 {
+    //script for time of life that an object or sound has in game
+
+
     public float timeToLive = 3f;
 
     // Start is called before the first frame update

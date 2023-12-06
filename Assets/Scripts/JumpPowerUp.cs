@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class JumpPowerUp : MonoBehaviour
 {
+
+    //script for jump powerup increasing how high player can jump
     public AudioSource sound;
     public void OnTriggerEnter2D(Collider2D collision)
     {

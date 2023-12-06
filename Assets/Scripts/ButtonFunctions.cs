@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class ButtonFunctions : MonoBehaviour
 {
+    //operates buttions for main menu
 
     public void Play(string levelName)
     {

@@ -5,6 +5,9 @@ using UnityEngine;
 public class RunPowerUp : MonoBehaviour
 {
 
+
+    // script for speed power up making player run faster
+
     public AudioSource sound;
     public void OnTriggerEnter2D(Collider2D collision)
     {

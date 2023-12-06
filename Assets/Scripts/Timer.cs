@@ -6,6 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
+
+    //operates the timer in the game levels which does not reset after beating level one and only resets after beating the whole game and returning to the main menu
+
+    //also syncs to timer text
+
+
     // Start is called before the first frame update
     static GameObject instance;
     public TMP_Text timerText;

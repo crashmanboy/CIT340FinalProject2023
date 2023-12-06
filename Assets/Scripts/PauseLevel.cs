@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 public class PauseLevel : MonoBehaviour
 {
 
+
+    //operates pause menu on levels
+
     private bool isPaused = false;
     private bool clickReleased = true;
     
